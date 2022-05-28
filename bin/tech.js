@@ -17,5 +17,6 @@ function supported() {
     { "name":"django-vue","backend_version":"python --version","frontend_vrsion":"node -v","git": "https://github.com/priyanshu1109/django_vue.git" },
     { "name":"django-react","backend_version":"python --version","frontend_vrsion":"node -v","git": "https://github.com/priyanshu1109/django_react/" },
     { "name":"django-angular","backend_version":"python --version","frontend_vrsion":"node -v","git": "https://github.com/priyanshu1109/django_angular.git" },
+    { "name":"android-app","backend_version":"java -version","frontend_vrsion":"node -v","git": "https://github.com/mayurs-code/android_template.git" },
   ];
 }
