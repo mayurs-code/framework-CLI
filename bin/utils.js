@@ -27,8 +27,7 @@ function showHelp() {
 }
 
 function showOptions(command) {
-  let techList = supported();
-  console.log(command[1]);
+  let techList = supported(); 
   if (command[0] == "ls" || command[0] == "list") { listCommand(); }
   else if (command[0] == "init" || command[0] == "i") {
     for (let i = 0, len = techList.length; i < len; i++) {
