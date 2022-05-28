@@ -7,7 +7,7 @@ const exec = require("child_process").exec;
 function showHelp() {
   console.log(clc.red("Invalid or no NHP Command Used."));
   console.log("");
-  console.log("To view list of available backend-frontend combinations");
+  console.log("To view list of available backend-frontend combinationsasdf");
   console.log(
     "#  use command " + clc.blueBright("ls") + " or " + clc.blueBright("list")
   );
@@ -27,12 +27,22 @@ function showHelp() {
 }
 
 function showOptions(command) {
-
+  let techList = supported();
+  console.log(command[1]);
   if (command[0] == "ls" || command[0] == "list") { listCommand(); }
   else if (command[0] == "init" || command[0] == "i") {
-    if (supported.hasOwnProperty(command[1])) { initCommand(command[1]); }
-    else { console.log(clc.redBright("The requested framework is not supported yet")); }
-  } else { showHelp(); }
+    for (let i = 0, len = techList.length; i < len; i++) {
+      if (command[1] == techList[i].name) {        
+        initCommand(command[1]);
+        return
+      }      
+    }
+      console.log(clc.redBright("The requested framework is not supported yet"));
+  }
+
+  else {
+    showHelp();
+  }
 }
 
 function initCommand(command) {
@@ -41,7 +51,7 @@ function initCommand(command) {
     if (command == techList[i].name) {
       console.log("--------------------------------");
       console.log(clc.cyan("INITIATING " + command));
-      console.log("at location " + process.cwd());
+      console.log("at location ");
       console.log("processing ... " + clc.blue(techList[i].git));
       var op = exec("git clone " + techList[i].git, (error, stdout, stderr) => {
         console.log(`......${stdout}`);
@@ -70,12 +80,12 @@ function initCommand(command) {
 
 function listCommand() {
   let techList = supported();
-  console.log(clc.greenBright("(•)")+" -> Backend Framework Installed")
-  console.log(clc.red("(X)")+" -> Backend Framework Not installed")
+  console.log(clc.greenBright("(•)") + " -> Backend Framework Installed")
+  console.log(clc.red("(X)") + " -> Backend Framework Not installed")
   for (let i = 0, len = techList.length; i < len; i++) {
     try {
       exec(techList[i].backend_version, (error, stdout, stderr) => {
-        
+
         let backend = clc.green("(•)")
         if (error) {
           if (stderr[0] == "f") {
