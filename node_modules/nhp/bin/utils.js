@@ -70,7 +70,7 @@ function initCommand(command) {
 
 function listCommand() {
   let techList = supported();
-  console.log(clc.greenBright("(•)")+" -> Backend Framework Installedasdfasdf")
+  console.log(clc.greenBright("(•)")+" -> Backend Framework Installed")
   console.log(clc.red("(X)")+" -> Backend Framework Not installed")
   for (let i = 0, len = techList.length; i < len; i++) {
     try {
